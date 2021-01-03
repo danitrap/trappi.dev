@@ -1,11 +1,11 @@
 {
-  "name": "11r",
-  "description": "america's favorite eleventy blog template",
-  "url": "https://reeseschultz.github.io",
-  "baseUrl": "/11r/",
+  "name": "trappi.dev",
+  "description": "yet another web development blog",
+  "url": "https://trappi.dev",
+  "baseUrl": "/",
   "author": {
-    "handle": "@ReeseCodes",
-    "name": "Reese Schultz"
+    "handle": "@danitrap",
+    "name": "Daniele Trapani"
   },
   "images": {
     "twitter": "twitter.jpg",
@@ -14,11 +14,11 @@
   "feed": {
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "id": "https://example.com/"
+    "id": "https://trappi.dev/"
   },
   "jsonfeed": {
     "filename": "feed.json",
     "path": "/feed/feed.json",
-    "url": "https://example.com/feed/feed.json"
+    "url": "https://trappi.dev/feed/feed.json"
   }
 }

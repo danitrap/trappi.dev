@@ -3,7 +3,11 @@
         {% if not post.data.draft %}
             <div class="mb-8 border-dotted border-b pb-8 border-gray-600">
                 <h2>
-                    <a class="block" href="{{ post.url | url }}">{{ post.data.title }}</a>
+                    {% if post.data.externalLink %}
+                        <a class="block" href="{{ post.data.externalLink }}" target="_blank">{{ post.data.title }}</a>
+                    {% else %}
+                        <a class="block" href="{{ post.url | url }}">{{ post.data.title }}</a>
+                    {% endif %}
                 </h2>
 
                 <p class="excerpt">{{ post.data.excerpt }}</p>

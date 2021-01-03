@@ -4,6 +4,6 @@ title: About
 path: about
 ---
 
-This website is a live example of an Eleventy template — it's not a real blog.
+Hi,
 
-People using this template may want to add some information to this page about them or their business.
+My name is Daniele (aka trappi) and I'm a full-stack web developer. I mainly dabble in TypeScript, Vue, React and Node.
