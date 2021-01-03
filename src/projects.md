@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Open Source Projects
+title: My Open Source Projects
 path: projects
 ---
 
