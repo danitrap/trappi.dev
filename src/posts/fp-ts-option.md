@@ -1,11 +1,13 @@
 ---
 layout: post
-title: '[FP-TS] Option'
+title: 'FP-TS Option [Italian]'
 excerpt: 'Abbastanza fp-ts per essere pericolosi'
+externalLink: https://acoustic-puma-9b5.notion.site/Option-347f6cdc8bda4522a4736cdd35fb1594
 date: 2022-04-03
 updatedDate: 2022-04-03
 tags:
   - post
+  - italian
   - fp-ts
   - functional programming
   - typescript
