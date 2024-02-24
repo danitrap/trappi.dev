@@ -10,7 +10,7 @@
 
 html,
 body {
-  @apply antialiased text-gray-500 bg-gray-900;
+  @apply antialiased text-gray-300 bg-gray-900;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -36,7 +36,7 @@ h4 > a,
 h5 > a,
 h6 > a,
 a {
-  @apply text-gray-300;
+  @apply text-white;
 }
 
 h1 {
@@ -64,7 +64,7 @@ a:hover {
 }
 
 p {
-  @apply text-lg;
+  @apply text-lg my-2;
 }
 
 pre {
@@ -73,7 +73,19 @@ pre {
 }
 
 hr {
-  @apply mt-4 mb-2 border-dotted border-b border-gray-600;
+  @apply mt-4 mb-2 border-dotted border-b border-gray-300;
+}
+
+.toc {
+  @apply content;
+}
+
+.toc > ol {
+  @apply mt-2;
+}
+
+.toc > ol > li {
+  font-size: 1em;
 }
 
 .attribution {
@@ -116,7 +128,7 @@ hr {
 }
 
 .excerpt {
-  @apply mb-2;
+  @apply my-3;
 }
 
 .next-page,
@@ -143,7 +155,7 @@ hr {
 }
 
 .top-notice {
-  @apply sticky top-0 flex justify-center bg-blue-600 py-1 text-sm;
+  @apply sticky top-0 flex justify-center bg-blue-600 py-1 -mt-1 text-sm;
 }
 
 .top-notice > a::before {
@@ -164,10 +176,5 @@ hr {
 }
 
 #privacy-notice-button-container:hover {
-  @apply bg-gray-700 rounded cursor-pointer;
-}
-
-.caption {
-  @apply text-center text-sm text-gray-400 w-3/4 pb-4 mx-auto w-full;
-  margin: 0 auto;
+  @apply bg-gray-500 rounded cursor-pointer;
 }

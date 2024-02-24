@@ -1,16 +1,16 @@
 # 11r
 
-[![Discord Shield](https://discordapp.com/api/guilds/732665868521177117/widget.png?style=shield)](https://discord.gg/CZ85mguYjK)
+America's favorite [Eleventy](https://www.11ty.dev) blog template.
 
-America's favorite [Eleventy](https://www.11ty.dev) blog template. Built by [Reese Schultz](https://github.com/reeseschultz).
-
-View the [demo](https://reeseschultz.github.io/11r/).
+[View the demo 👀...](https://reeseschultz.github.io/11r/)
 
 ## Features
 
 - [Eleventy](https://www.11ty.dev) for static site generation. See `.eleventy.js`.
 - [Nunjucks](https://mozilla.github.io/nunjucks/) for templating.
 - [TailwindCSS](https://tailwindcss.com/) for utility-first styling. See `tailwind.config.js` and `src/styles/tailwind.css`.
+- [markdown-it-anchor](https://www.npmjs.com/package/markdown-it-anchor) for generating anchors for headings.
+- [eleventy-plugin-nesting-toc](https://www.npmjs.com/package/eleventy-plugin-nesting-toc) for generating tables of contents from anchors. See [this page](https://reeseschultz.github.io/11r/post/lorem-ipsum/) for a demo.
 - [Prism](https://prismjs.com/) syntax highlighting for code with copy button scripting included via [clipboard.js](https://clipboardjs.com/). See `src/styles/base.css` for the theme; and `src/scripts/copy.js`, which is used by `main.js`.
 - [Rollup](https://rollupjs.org) for bundling and compiling. See `rollup.config.js`.
 - JavaScript-based privacy policy notice dismissal handling. See `src/scripts/privacy-policy.js`, which is used by `main.js`.
@@ -36,15 +36,15 @@ Tags are styled in `src/styles/tags.css`. Coloring custom tags works as such:
 ...
 
 .tag.beer {
-  @apply bg-blue-700;
+  @apply bg-blue-500;
 }
 
 .tag.spirituality {
-  @apply bg-indigo-700;
+  @apply bg-indigo-500;
 }
 
 .tag.orcas {
-  @apply bg-purple-700;
+  @apply bg-purple-500;
 }
 
 ...
@@ -52,12 +52,9 @@ Tags are styled in `src/styles/tags.css`. Coloring custom tags works as such:
 
 ## Credits
 
-- This project was forked from [11ty Starter](https://github.com/mattwaler/eleventy-starter) by [Matt Waler](https://mattwaler.com/).
 - The code copying script was adapted from [https://codepen.io/wilbo/pen/xRVLOj](https://codepen.io/wilbo/pen/xRVLOj) by [Wilbert Schepenaar](https://wilbert.dev/).
 - SEO handling was inspired from [Skeleventy](https://github.com/josephdyer/skeleventy) by [Joseph Dyer](https://github.com/josephdyer).
 
-## Contributing
+## License
 
-Find a problem, or have an improvement in mind? Great. Go ahead and submit a pull request. Note that the maintainer offers no assurance he will respond to you, fix bugs or add features on your behalf in a timely fashion, if ever. All that said, [GitHub Issues](https://github.com/reeseschultz/11r/issues/new/choose) is fine for constructive discussion.
-
-By submitting a pull request, you agree to license your work under [this project's MIT license](https://github.com/reeseschultz/11r/blob/main/LICENSE).
+All contributions to this repository are licensed under [MIT](https://github.com/reeseschultz/11r/blob/master/LICENSE).
