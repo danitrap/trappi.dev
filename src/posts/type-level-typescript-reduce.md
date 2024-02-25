@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Type Level TypeScript | Reduce [Italian]
-excerpt: "Esploriamo l'utilizzo della funzione reduce in JavaScript e la sua implementazione con tipi condizionali ricorsivi in TypeScript"
+title: Type Level TypeScript | Reduce
+excerpt: "Exploring the use of the reduce function in JavaScript and its implementation with recursive conditional types in TypeScript"
 date: 2024-02-22
 updatedDate: 2024-02-22
 tags:
@@ -11,9 +11,9 @@ tags:
 draft: false
 ---
 
-La riduzione di un array in una stringa concatenata è un'operazione comune in programmazione. In JavaScript, la funzione `reduce` fornisce un modo versatile per ridurre gli elementi di un array in un singolo valore. Vediamo come utilizzarla:
+Reducing an array into a concatenated string is a common operation in programming. In JavaScript, the `reduce` function provides a versatile way to reduce the elements of an array into a single value. Let's see how to use it:
 
-### JavaScript: Utilizzo della funzione `reduce`
+### JavaScript: Using the `reduce` function
 
 ```javascript
 const list = ["ciao", "come", "stai"];
@@ -22,11 +22,11 @@ const joinedString = list.reduce((acc, curr) => `${acc} ${curr}`, "").trim();
 console.log(joinedString); // Output: "ciao come stai"
 ```
 
-In questo esempio, abbiamo un array di stringhe `list` e vogliamo concatenare tutte le stringhe in un'unica stringa separata da uno spazio. Utilizzando la funzione `reduce`, definiamo una callback che aggiunge l'elemento corrente all'accumulatore, separato da uno spazio. Infine, utilizziamo il metodo `trim()` per rimuovere eventuali spazi in eccesso all'inizio e alla fine della stringa risultante.
+In this example, we have an array of strings `list` and we want to concatenate all the strings into a single string separated by a space. Using the `reduce` function, we define a callback that adds the current item to the accumulator, separated by a space. Finally, we use the `trim()` method to remove any excess spaces at the beginning and end of the resulting string.
 
-### Conditional Types ricorsivi per ridurre
+### Recursive Conditional Types for Reduction
 
-Ora, esploreremo come possiamo ottenere lo stesso risultato utilizzando i tipi condizionali ricorsivi in TypeScript. Qui di seguito è riportata un'implementazione che concatena le stringhe all'interno di un tipo di array:
+Now, let's explore how we can achieve the same result using recursive conditional types in TypeScript. Below is an implementation that concatenates strings within an array type:
 
 ```typescript
 type List = ["ciao", "come", "stai"];
@@ -45,25 +45,21 @@ type Joined = Join<List>;
 //   ^? type Joined = "ciao come stai"
 ```
 
-In questo codice, definiamo un tipo `Join` che accetta un tipo di array, un separatore opzionale e una stringa di output opzionale. Utilizzando i tipi condizionali ricorsivi, concateniamo le stringhe dell'array con il separatore specificato. Quando raggiungiamo la fine dell'array, rimuoviamo il separatore finale dalla stringa risultante. Il risultato è una stringa che rappresenta l'array concatenato.
+In this code, we define a type `Join` that takes an array type, an optional separator, and an optional output string. Using recursive conditional types, we concatenate the strings of the array with the specified separator. When we reach the end of the array, we remove the final separator from the resulting string. The result is a string that represents the concatenated array.
 
-#### Caso Generale
+#### General Case
 
-In generale possiamo definire un tipo `Reduce` che accetta un tipo di array e un valore iniziale:
+In general, we can define a `Reduce` type that takes an array type and an initial value:
 
 ```typescript
-type Reduce<List, Result = /* valore iniziale */> = List extends [
+type Reduce<List, Result = /* initial value */> = List extends [
   infer Head,
   ...infer Tail
 ]
-  ? Reduce<Tail, /* logica di riduzione qui */>
+  ? Reduce<Tail, /* reduction logic here */>
   : Result;
 ```
 
-### Conclusione
+### Conclusion
 
-In questo articolo abbiamo esplorato la potenza della programmazione type-level in TypeScript, utilizzando i tipi condizionali ricorsivi per emulare il comportamento della funzione `reduce` di JavaScript. Questo è solo un esempio delle molte funzionalità avanzate che TypeScript offre per la manipolazione dei tipi. Spero che tu abbia trovato utile questo articolo e ti abbia ispirato a esplorare ulteriormente la programmazione type-level in TypeScript.
-
-```
-
-```
+In this article, we explored the power of type-level programming in TypeScript, using recursive conditional types to emulate the behavior of JavaScript's `reduce` function. This is just one example of the many advanced features that TypeScript offers for type manipulation. I hope you found this article useful and that it has inspired you to further explore type-level programming in TypeScript.

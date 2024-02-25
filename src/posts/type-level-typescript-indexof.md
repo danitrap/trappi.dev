@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Type Level TypeScript | IndexOf [Italian]
-excerpt: "Esploriamo l'utilizzo della funzione indexOf in JavaScript e la sua implementazione con tipi condizionali ricorsivi in TypeScript"
+title: Type Level TypeScript | IndexOf
+excerpt: "Exploring the use of the indexOf function in JavaScript and its implementation with recursive conditional types in TypeScript"
 date: 2024-02-24
 updatedDate: 2024-02-24
 tags:
@@ -11,9 +11,9 @@ tags:
 draft: false
 ---
 
-La ricerca dell'indice di un elemento in un array è un'operazione comune in programmazione. In JavaScript, la funzione `indexOf` fornisce un modo per trovare l'indice del primo elemento corrispondente a un valore specificato. Vediamo come utilizzarla:
+Searching for the index of an element in an array is a common operation in programming. In JavaScript, the `indexOf` function provides a way to find the index of the first element that matches a specified value. Let's see how to use it:
 
-### JavaScript: Utilizzo della funzione `indexOf`
+### JavaScript: Using the `indexOf` function
 
 ```javascript
 const list = ["ciao", "come", "stai"];
@@ -25,11 +25,11 @@ const notFoundIndex = list.indexOf("404");
 console.log(notFoundIndex); // Output: -1
 ```
 
-In questo esempio, abbiamo un array di stringhe `list` e vogliamo trovare l'indice del primo elemento uguale a "come". Utilizzando la funzione `indexOf`, otteniamo l'indice del primo elemento corrispondente a "come". Se l'elemento non viene trovato, viene restituito -1.
+In this example, we have an array of strings `list` and we want to find the index of the first element equal to "come". Using the `indexOf` function, we obtain the index of the first element that matches "come". If the element is not found, -1 is returned.
 
-### Conditional Types ricorsivi per trovare l'indice
+### Recursive Conditional Types for Finding the Index
 
-Ora, esploreremo come possiamo ottenere lo stesso risultato utilizzando i tipi condizionali ricorsivi in TypeScript. Qui di seguito è riportata un'implementazione che cerca l'indice di un elemento all'interno di un tipo di array:
+Now, let's explore how we can achieve the same result using recursive conditional types in TypeScript. Below is an implementation that searches for the index of an element within an array type:
 
 ```typescript
 type List = ["ciao", "come", "stai"];
@@ -49,8 +49,8 @@ type NotFoundIndex = IndexOf<List, "404">;
 //   ^? type NotFoundIndex = -1
 ```
 
-In questo codice, definiamo un tipo `IndexOf` che accetta un tipo di array `Haystack`, un elemento da cercare `Needle`, e un contatore opzionale `Counter` che tiene traccia della lunghezza dell'array. Utilizzando i tipi condizionali ricorsivi, verifichiamo se la testa dell'array corrente è uguale all'elemento cercato. Se sì, restituiamo la lunghezza del contatore, che rappresenta l'indice dell'elemento trovato. Se no, chiamiamo ricorsivamente `IndexOf` con la coda dell'array e incrementiamo il contatore. Questo processo continua fino a quando non troviamo l'elemento o esauriamo l'array, nel qual caso restituiamo -1.
+In this code, we define a type `IndexOf` that takes an array type `Haystack`, an element to search for `Needle`, and an optional counter `Counter` that tracks the length of the array. Using recursive conditional types, we check if the head of the current array is equal to the searched element. If yes, we return the length of the counter, which represents the index of the found element. If not, we recursively call `IndexOf` with the tail of the array and increment the counter. This process continues until we find the element or exhaust the array, in which case we return -1.
 
-### Conclusione
+### Conclusion
 
-In questo articolo, abbiamo esplorato la potenza della programmazione type-level in TypeScript, utilizzando i tipi condizionali ricorsivi per emulare il comportamento della funzione `indexOf` di JavaScript. Questo è solo un esempio delle molte funzionalità avanzate che TypeScript offre per la manipolazione dei tipi. Spero che tu abbia trovato utile questo articolo e ti abbia ispirato a esplorare ulteriormente la programmazione type-level in TypeScript.
+In this article, we explored the power of type-level programming in TypeScript, using recursive conditional types to emulate the behavior of JavaScript's `indexOf` function. This is just one example of the many advanced features that TypeScript offers for type manipulation. I hope you found this article useful and that it has inspired you to further explore type-level programming in TypeScript.

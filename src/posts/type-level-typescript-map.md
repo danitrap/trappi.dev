@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Type Level TypeScript | Map [Italian]
-excerpt: "Esploriamo la programmazione type-level in TypeScript utilizzando i tipi condizionali ricorsivi e i tipi mappati"
+title: Type Level TypeScript | Map
+excerpt: "Exploring type-level programming in TypeScript using recursive conditional types and mapped types"
 date: 2024-02-20
 updatedDate: 2024-02-20
 tags:
@@ -11,11 +11,11 @@ tags:
 draft: false
 ---
 
-Ricomincio a scrivere un po' sul blog, questo è il primo post di una serie sulla programmazione type level in TypeScript. TypeScript offre un'ampia gamma di funzionalità avanzate, tra cui i Conditional Types riscorsivi ed i Mapped Types. In questo articolo, esploreremo due approcci diversi per ottenere lo stesso risultato: trasformare una lista di stringhe in una lista dove ogni elemento è scritto in maiuscolo e termina con tre punti esclamativi.
+I'm starting to write a bit on the blog again, this is the first post in a series on type-level programming in TypeScript. TypeScript offers a wide range of advanced features, including recursive Conditional Types and Mapped Types. In this article, we will explore two different approaches to achieve the same result: transforming a list of strings into a list where each element is written in uppercase and ends with three exclamation points.
 
-#### JavaScript: il punto di partenza
+#### JavaScript: The Starting Point
 
-Prima di addentrarci nei dettagli di TypeScript, diamo uno sguardo al codice JavaScript che vogliamo replicare utilizzando i tipi di TypeScript.
+Before diving into the details of TypeScript, let's take a look at the JavaScript code we want to replicate using TypeScript types.
 
 ```javascript
 const list = ["ciao", "come", "stai"];
@@ -23,11 +23,11 @@ const list = ["ciao", "come", "stai"];
 const shoutedList = list.map((item) => `${item.toUpperCase()}!!!`);
 ```
 
-Questo semplice snippet di codice prende un array di stringhe e applica una trasformazione a ciascun elemento: lo rende maiuscolo e aggiunge tre punti esclamativi alla fine. Il risultato è un nuovo array chiamato `shoutedList`.
+This simple code snippet takes an array of strings and applies a transformation to each element: it makes it uppercase and adds three exclamation points at the end. The result is a new array called `shoutedList`.
 
-#### Conditional Types Ricorsivi
+#### Recursive Conditional Types
 
-Il primo approccio che esamineremo coinvolge l'uso di tipi ricorsivi condizionali. In TypeScript, è possibile definire tipi che si comportano in modo ricorsivo, applicando condizioni durante la loro espansione. Ecco come il nostro codice potrebbe apparire utilizzando questa tecnica:
+The first approach we will examine involves the use of recursive conditional types. In TypeScript, it is possible to define types that behave recursively, applying conditions during their expansion. Here's how our code might look using this technique:
 
 ```typescript
 type List = ["ciao", "come", "stai"];
@@ -39,21 +39,21 @@ type ShoutedList = Shout<List>;
 //   ^? type ShoutedList = ["CIAO!!!", "COME!!!", "STAI!!!"]
 ```
 
-In questo codice, definiamo un tipo `Shout` che accetta un tipo di lista. Se la lista è vuota, restituiamo un array vuoto. Altrimenti, estraiamo il primo elemento della lista e lo trasformiamo in maiuscolo aggiungendo i punti esclamativi. Quindi, chiamiamo ricorsivamente il tipo `Shout` con il resto della lista. Questo processo continua fino a quando non abbiamo esaminato tutti gli elementi della lista originale.
+In this code, we define a type `Shout` that takes a list type. If the list is empty, we return an empty array. Otherwise, we extract the first element of the list and transform it into uppercase adding the exclamation points. Then, we recursively call the type `Shout` with the rest of the list. This process continues until we have examined all the elements of the original list.
 
-#### Caso Generale con Conditional Types Ricorsivi
+#### General Case with Recursive Conditional Types
 
-Generalmente parlando, per eseguire un `map` su un array possiamo fare così:
+Generally speaking, to perform a `map` on an array we can do it like this:
 
 ```typescript
 type Map<T extends any[]> = T extends [infer Head, ...infer Tail]
-  ? [/* trasforma qui Head */, ...Map<Tail, U>]
+  ? [/* transform Head here */, ...Map<Tail>]
   : [];
 ```
 
 ### Mapped Types
 
-Un altro approccio per ottenere lo stesso risultato è utilizzare i tipi mappati di TypeScript. Con i tipi mappati, è possibile iterare attraverso i tipi esistenti e costruirne di nuovi. Infatti, non funzionano solo con gli oggetti, ma anche con gli array! Ecco come possiamo implementare la stessa trasformazione utilizzando i mapped types:
+Another approach to achieve the same result is to use TypeScript's mapped types. With mapped types, it is possible to iterate through existing types and build new ones. Indeed, they work not only with objects but also with arrays! Here's how we can implement the same transformation using mapped types:
 
 ```typescript
 type List = ["ciao", "come", "stai"];
@@ -65,18 +65,18 @@ type ShoutedList = Shout<List>;
 //   ^? type ShoutedList = ["CIAO!!!", "COME!!!", "STAI!!!"]
 ```
 
-In questo caso, definiamo un tipo `Shout` che accetta una lista di stringhe. Utilizzando un mapped type, iteriamo attraverso ogni elemento della lista originale e applichiamo la trasformazione desiderata: convertiamo la stringa in maiuscolo e aggiungiamo i punti esclamativi. Il risultato è un nuovo tipo che rappresenta la lista trasformata.
+In this case, we define a type `Shout` that takes a list of strings. Using a mapped type, we iterate through each element of the original list and apply the desired transformation: we convert the string to uppercase and add the exclamation points. The result is a new type that represents the transformed list.
 
-#### Caso Generale Mapped Types
+#### General Case Mapped Types
 
-In generale, per eseguire un `map` su un array con i Mapped Types possiamo fare così:
+In general, to perform a `map` on an array with Mapped Types we can do it like this:
 
 ```typescript
 type Map<T extends any[]> = {
-  [k in keyof T]: /* trasforma qui T[k] */;
+  [k in keyof T]: /* transform T[k] here */;
 };
 ```
 
-### Conclusioni
+### Conclusions
 
-Entrambi gli approcci ci consentono di ottenere lo stesso risultato: una lista di stringhe in maiuscolo con i punti esclamativi aggiunti. Mentre il primo utilizza la ricorsione condizionale, il secondo sfrutta i tipi mappati. La scelta tra i due dipenderà dalle esigenze specifiche del progetto e dalle preferenze personali dello sviluppatore. In entrambi i casi, ciò che emerge è la potenza e la flessibilità dei tipi in TypeScript, che ci consentono di esprimere concetti complessi in modo chiaro e sicuro durante la progettazione delle nostre applicazioni.
+Both approaches allow us to achieve the same result: a list of strings in uppercase with exclamation points added. While the first uses conditional recursion, the second leverages mapped types. The choice between the two will depend on the specific needs of the project and the personal preferences of the developer. In both cases, what emerges is the power and flexibility of types in TypeScript, which allow us to express complex concepts clearly and safely during the design of our applications.

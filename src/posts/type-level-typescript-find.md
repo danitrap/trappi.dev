@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Type Level TypeScript | Find [Italian]
-excerpt: "Esploriamo l'utilizzo della funzione find in JavaScript e la sua implementazione con tipi condizionali ricorsivi in TypeScript"
+title: Type Level TypeScript | Find
+excerpt: "Exploring the use of the find function in JavaScript and its implementation with recursive conditional types in TypeScript"
 date: 2024-02-23
 updatedDate: 2024-02-23
 tags:
@@ -11,9 +11,9 @@ tags:
 draft: false
 ---
 
-Oggi esploreremo l'utilizzo della funzione `find` in JavaScript e la sua implementazione con tipi condizionali ricorsivi in TypeScript. La funzione `find` è un metodo utile per trovare il primo elemento in un array che soddisfa una determinata condizione. Vediamo come possiamo utilizzarla in JavaScript e replicarne il comportamento in TypeScript utilizzando i tipi condizionali ricorsivi.
+Today, we'll explore the use of the `find` function in JavaScript and its implementation with recursive conditional types in TypeScript. The `find` function is a useful method for finding the first element in an array that satisfies a given condition. Let's see how we can use it in JavaScript and replicate its behavior in TypeScript using recursive conditional types.
 
-### JavaScript: Utilizzo della funzione `find`
+### JavaScript: Using the `find` function
 
 ```javascript
 const list = ["ciao", "come", "stai"];
@@ -25,11 +25,11 @@ const notFound = list.find((a) => a === "404");
 console.log(notFound); // Output: undefined
 ```
 
-In questo esempio, abbiamo un array di stringhe `list` e vogliamo trovare il primo elemento uguale a "come". Utilizzando la funzione `find`, definiamo una callback che restituisce `true` se l'elemento corrente è uguale a "come", altrimenti restituisce `false`. Se l'elemento viene trovato, viene restituito, altrimenti viene restituito `undefined`.
+In this example, we have an array of strings `list` and we want to find the first element equal to "come". Using the `find` function, we define a callback that returns `true` if the current item is equal to "come", otherwise it returns `false`. If the item is found, it is returned; otherwise, `undefined` is returned.
 
-### Conditional Types ricorsivi per cercare
+### Recursive Conditional Types for Finding
 
-Ora, esploreremo come possiamo ottenere lo stesso risultato utilizzando i tipi condizionali ricorsivi in TypeScript. Qui di seguito è riportata un'implementazione che cerca un elemento all'interno di un tipo di array:
+Now, let's explore how we can achieve the same result using recursive conditional types in TypeScript. Below is an implementation that searches for an element within an array type:
 
 ```typescript
 type List = ["ciao", "come", "stai"];
@@ -46,12 +46,8 @@ type NotFound = Find<List, "404">;
 //   ^? type NotFound = undefined
 ```
 
-In questo codice, definiamo un tipo `Find` che accetta un tipo di array `Haystack` e un elemento da cercare `Needle`. Utilizzando i tipi condizionali ricorsivi, verifichiamo se la testa dell'array corrente è uguale all'elemento cercato. Se sì, restituiamo la testa dell'array. Se no, chiamiamo ricorsivamente `Find` con la coda dell'array. Questo processo continua fino a quando non troviamo l'elemento o esauriamo l'array, nel qual caso restituiamo `undefined`.
+In this code, we define a type `Find` that takes an array type `Haystack` and an element to search for `Needle`. Using recursive conditional types, we check if the head of the current array is equal to the searched element. If yes, we return the head of the array. If not, we recursively call `Find` with the tail of the array. This process continues until we find the element or exhaust the array, in which case we return `undefined`.
 
-### Conclusione
+### Conclusion
 
-In questo articolo, abbiamo esplorato la potenza della programmazione type-level in TypeScript, utilizzando i tipi condizionali ricorsivi per emulare il comportamento della funzione `find` di JavaScript. Questo è solo un esempio delle molte funzionalità avanzate che TypeScript offre per la manipolazione dei tipi. Spero che tu abbia trovato utile questo articolo e ti abbia ispirato a esplorare ulteriormente la programmazione type-level in TypeScript.
-
-```
-
-```
+In this article, we explored the power of type-level programming in TypeScript, using recursive conditional types to emulate the behavior of JavaScript's `find` function. This is just one example of the many advanced features that TypeScript offers for type manipulation. I hope you found this article useful and that it has inspired you to further explore type-level programming in TypeScript.
